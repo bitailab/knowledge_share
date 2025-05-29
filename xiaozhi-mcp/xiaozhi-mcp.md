@@ -1,13 +1,13 @@
 
 <img src="images/cover.png" alt="cover" width=30% height=30%>
 
-# MCP是什么
+# 一、MCP是什么
 
 <img src="images/mcp.jpg" alt="mcp" width=40% height=40%>
 
 把小智AI比作是大脑，MCP就是小智的五官和手脚，使得小智具备感知世界，改造世界的能力。有了MCP，小智就能成为真正的贾维斯。
 因为MCP的出现，使得各种功能的mcp-server很容易开发和复用，形成工具箱，拿来即用，大大降低了智能体的开发难度。
-# MCP的通信机制
+# 二、MCP的通信机制
 MCP 使用 JSON-RPC 2.0 作为其网络传输的数据格式，
 ## stdio
 mcp-server在本地部署，也就是说mcp-server和mcp-client在同一台机器上部署，双方通过标准输入输出进行通信，目前主流的方式，优势是通信延迟低。
@@ -19,13 +19,13 @@ mcp-client       <---        mcp-server(/sse)
 mcp-client       --->        mcp-server(/messages)  
 
 [示例代码](https://modelcontextprotocol.io/docs/concepts/transports#python-server )
-## MCP-proxy
+# 三、MCP-proxy
 [代码链接](https://github.com/sparfenyuk/mcp-proxy?tab=readme-ov-file#11-configuration)
 
 作用是stdio<->sse的双向代理  
 mcp-client【stdio】 <--->【stdio】 mcp-proxy 【sse】<---> 【sse】mcp-server（Homeassistant）  
 mcp-client【sse】<--->【sse】mcp-proxy【stdio】<--->【stdio】mcp-server
-## xiaozhi-server MCP原理
+# 四、xiaozhi-server MCP原理
 ### 工作流
 - 支持MCP-proxy的工作流
 - 支持直连MCP-server，sse不支持access_key，我已经修改OK。
@@ -44,7 +44,7 @@ tools1 ---> mcp-client1  <---> mcp-server1
 tools2 ---> mcp-client2  <---> mcp-server2
 
 Homeassistant是sse的实现，所有教程都是将mcp-client配置成用stdio+mcp_proxy的方式实现连接server，是否能用SSE直接连？xiaozhi-server虽然支持stdio和sse两种mcp-server，但是sse方式不支持access_key，无法通过配置连接Homeassistant。如果修改代码支持sse直连？
-## 虾哥MCP原理
+# 五、虾哥MCP原理
 [代码链接](https://github.com/78/mcp-calculator/tree/main)
 
 xiaozhi-server(虾哥)【websocket】<---> 【websocket】mcp_pipe.py【stdio】<--->【stdio】mcp-server
