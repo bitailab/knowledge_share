@@ -1,4 +1,6 @@
 
+# 【硬核】让小智AI成为贾维斯的必点科技树-MCP详解
+
 <img src="images/cover.png" alt="cover" width=40% height=40%>
 
 # 一、MCP是什么
